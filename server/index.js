@@ -6,12 +6,10 @@ const glob = require("glob");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '50mb', type: 'application/json' }));
 
-console.log(config);
-// Load APIs
 const apis = glob.sync(`${config.path}/**/*Api.js`);
 apis.forEach(apiPath => {
-  console.log(apiPath);
   require(`${apiPath}`)(app);
 });
 
