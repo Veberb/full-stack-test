@@ -14,6 +14,7 @@ router.post("/", async (req, res, next) => {
     const user = await userManager.create(req.body);
     res.json("user");
   } catch (error) {
-    next(error);
+    console.log(error.errors);
+    next(JSON.stringify(error.errors[0]));
   }
 });
