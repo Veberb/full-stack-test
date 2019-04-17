@@ -1,10 +1,10 @@
 const { User } = require("../models/");
 
 exports.create = async ({ name, email, password }) => {
-  console.log(name, email, password);
-  return User.create({
+  const { dataValues: user } = await User.create({
     name,
     email,
     password
   });
+  return user;
 };
