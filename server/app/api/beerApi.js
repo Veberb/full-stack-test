@@ -1,5 +1,6 @@
 const express = require("express");
 const VerifyToken = require("../middleware/verifyToken");
+const beerManager = require("../manager/beerManager");
 
 const router = express.Router({
   mergeParams: true
@@ -8,15 +9,13 @@ const router = express.Router({
 module.exports = app => {
   app.use("/api/beers", router);
 };
-
-router.get("/", VerifyToken, async (req, res, next) => {
+// VerifyToken
+router.get("/", async (req, res, next) => {
   try {
-    console.log("valido");
-    // const user = await userManager.create(req.body);
-    res.json("user");
+    const beers = await beerManager.list(req.query);
+    return res.json(beers);
   } catch (error) {
-    console.log("invalido");
     console.log(error);
-    next(JSON.stringify(error));
+    next(error);
   }
 });
