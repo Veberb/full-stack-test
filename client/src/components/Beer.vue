@@ -1,15 +1,7 @@
 <template>
   <b-card class="container beer-list">
     <div>
-      <b-table
-        id="table-id"
-        :items="beers"
-        :per-page="per_page"
-        :current-page="page"
-        striped
-        hover
-        small
-      ></b-table>
+      <b-table id="table-id" :items="beers" :current-page="page" striped hover small></b-table>
       <b-pagination class="center" v-model="page" :total-rows="300" :per-page="per_page"></b-pagination>
     </div>
   </b-card>
