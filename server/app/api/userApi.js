@@ -17,23 +17,19 @@ router.post("/", async (req, res, next) => {
     const user = await userManager.create(req.body);
     res.json("user");
   } catch (error) {
-    console.log(error.errors);
     next(JSON.stringify(error.errors[0]));
   }
 });
 
 router.post("/login", async (req, res, next) => {
   try {
-    console.log(req.body);
     const user = await userManager.login(req.body);
 
     var token = jwt.sign({ id: user.id }, config.secret, {
       expiresIn: 86400
     });
-    console.log(token);
     res.status(200).send({ auth: true, token: token });
   } catch (error) {
-    console.log(error);
-    next(error.output);
+    next(error);
   }
 });

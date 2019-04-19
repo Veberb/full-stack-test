@@ -49,8 +49,9 @@ export default {
     async onSubmit (event) {
       try {
         if (event) event.preventDefault()
-        const token = await userService.login(this.form)
-        console.log(token)
+        await userService.login(this.form)
+
+        this.$router.push('/beer')
       } catch (error) {
         console.log(error, 'oi')
       }

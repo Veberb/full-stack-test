@@ -1,9 +1,14 @@
-import axios from 'axios'
-import { dev } from '../../config/'
-const apiUrl = `http://${dev.host}:${dev.serverPort}/api`
+import { $http, authorization } from '../util/http'
 
 export default {
   async login (data) {
-    return axios.post(`${apiUrl}/users/login`, data)
+    try {
+      const res = await $http.post('/users/login', data)
+      console.log(res)
+      authorization(res.data.token)
+      return res.data
+    } catch (e) {
+      throw e.response.data
+    }
   }
 }
