@@ -25,17 +25,6 @@ export default {
       return this.items.length
     },
     beers () {
-      console.log('chamou computed')
-      const newArray = this.items.map(item => ({
-        name: item.name,
-        tagline: item.tagline,
-        'first brewed': item.first_brewed,
-        abv: `${item.abv}%`,
-        ibu: item.ibu,
-        'brewers tips': item.brewers_tips
-      }))
-      console.log(newArray, 'newArray')
-
       return this.items.map(item => ({
         name: item.name,
         id: item.id,

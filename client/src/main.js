@@ -6,7 +6,7 @@ import router from './router'
 import BootstrapVue from 'bootstrap-vue'
 import VeeValidate from 'vee-validate'
 import InfiniteLoading from 'vue-infinite-loading'
-
+import './util/toasted'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
