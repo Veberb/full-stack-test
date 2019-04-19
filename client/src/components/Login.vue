@@ -46,10 +46,14 @@ export default {
     }
   },
   methods: {
-    async onSubmit () {
-      console.log('koas')
-      const token = await userService.login({ data: this.form })
-      console.log(token)
+    async onSubmit (event) {
+      try {
+        if (event) event.preventDefault()
+        const token = await userService.login(this.form)
+        console.log(token)
+      } catch (error) {
+        console.log(error, 'oi')
+      }
     }
   }
 }

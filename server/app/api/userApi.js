@@ -2,6 +2,7 @@ const express = require("express");
 const userManager = require("../manager/userManager");
 const config = require("../../config");
 const jwt = require("jsonwebtoken");
+const Boom = require("boom");
 
 const router = express.Router({
   mergeParams: true
@@ -23,7 +24,7 @@ router.post("/", async (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
   try {
-    console.log("oi");
+    console.log(req.body);
     const user = await userManager.login(req.body);
 
     var token = jwt.sign({ id: user.id }, config.secret, {
@@ -33,6 +34,6 @@ router.post("/login", async (req, res, next) => {
     res.status(200).send({ auth: true, token: token });
   } catch (error) {
     console.log(error);
-    next(JSON.stringify(error));
+    next(error.output);
   }
 });
