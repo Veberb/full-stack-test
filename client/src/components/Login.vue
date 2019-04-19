@@ -32,6 +32,9 @@
 </template>
 
 <script>
+// eslint-disable-next-line
+import userService from "../service/userService";
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -43,8 +46,10 @@ export default {
     }
   },
   methods: {
-    onSubmit: function () {
-      console.log('oi')
+    async onSubmit () {
+      console.log('koas')
+      const token = await userService.login({ data: this.form })
+      console.log(token)
     }
   }
 }
