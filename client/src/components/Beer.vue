@@ -2,7 +2,7 @@
   <b-card class="container beer-list">
     <div>
       <b-table
-        id="my-table"
+        id="table-id"
         :items="beers"
         :per-page="per_page"
         :current-page="page"
@@ -10,13 +10,7 @@
         hover
         small
       ></b-table>
-      <b-pagination
-        class="center"
-        v-model="page"
-        :total-rows="300"
-        :per-page="per_page"
-        aria-controls="my-table"
-      ></b-pagination>
+      <b-pagination class="center" v-model="page" :total-rows="300" :per-page="per_page"></b-pagination>
     </div>
   </b-card>
 </template>
@@ -24,7 +18,7 @@
 <script>
 // eslint-disable-next-line
 import beerService from "../service/beerService";
-import Vue from 'vue';
+
 export default {
   data () {
     return {
@@ -52,6 +46,7 @@ export default {
 
       return this.items.map(item => ({
         name: item.name,
+        id: item.id,
         tagline: item.tagline,
         'first brewed': item.first_brewed,
         abv: `${item.abv}%`,
@@ -64,7 +59,6 @@ export default {
     async page () {
       this.items = await this.fetch()
       console.log(this.items)
-      this.$forceUpdate()
     }
   },
   async created () {
