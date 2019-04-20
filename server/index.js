@@ -17,7 +17,6 @@ apis.forEach(apiPath => {
 });
 app.use((err, req, res, next) => {
   const error = Boom.isBoom(err) ? err : Boom.boomify(err);
-
   res
     .status(error.output.statusCode)
     .json({ message: error.message, error: error.output.payload.error });
