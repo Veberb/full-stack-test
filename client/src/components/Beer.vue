@@ -50,7 +50,6 @@ export default {
     beers () {
       return this.items.map(item => ({
         name: item.name,
-        id: item.id,
         tagline: item.tagline,
         'first brewed': item.first_brewed,
         abv: `${item.abv}%`,

@@ -9,7 +9,7 @@ const router = express.Router({
 module.exports = app => {
   app.use("/api/beers", router);
 };
-// VerifyToken
+
 router.get("/", VerifyToken, async (req, res, next) => {
   try {
     const beers = await beerManager.list(req.query);
