@@ -6,7 +6,7 @@
           class="filter"
           v-model="beer_name"
           @input="filter"
-          placeholder="Enter your name"
+          placeholder="Enter Beer name"
         ></b-form-input>
       </div>
       <div>
