@@ -2,30 +2,25 @@
   <img width="260" src="https://github.com/myTapp/front-end-test/blob/master/mytapp.png?raw=true">
 </p>
 
-- O teste consiste em criar uma aplicação:
-  - em node.js
-  - utilizando o banco de dados PostgreSQL
-  - que expõe uma API REST de um CRUD simples de usuários
-  
-- E uma interface web:
-  - para login
-  - para consulta de dados de uma API externa
-  
-- O front-end deve ser simples e deve apresentar funcionalidades básicas como login, mensagens de usuário / senha incorretos, ...
-- Depois de logado o usuário da aplicação deve poder consumir pela interface dados de uma das API's externas (da escolha do candidato) da listagem de [API's públicas](https://github.com/toddmotto/public-apis).
-  - Uma das API's entrega [cervejas e não necessita autenticação](https://punkapi.com/)
-  - Deve se apresentar os dados numa listagem simples com paginação e opcionalmente filtros
-  - Os endpoints de consulta de dados devem todos ter autenticação por webtoken ou similar
-  
-- O CRUD não necessita interface, coloque os enpoints disponíveis no readme
-  
-- Pode ser utilizado qualquer ORM de preferência, aconselhamos o uso do [sequelize](https://github.com/sequelize/sequelize) ou [typeorm](https://github.com/typeorm/typeorm)
-- Pode ser utilizado qualquer framework front-end de preferência, preprocessadores de css, task runners, bundlers, ... mas nenhum deles é obrigatório, quanto mais simples e direto ao ponto o código melhor (KISS) - se algum for utilizado, não se deve fazer o commit de pastas como node_modules, o projeto deve instalar suas dependências a partir do package.json
-- Será julgado além do funcionamento a estrutura do código, o uso de boas práticas no js, html e css
+- Ambiente
 
+  - Node - v10.15.0
+  - Vue - 2.6.10
+  - PostgreSQL 10.6
 
-- Deve ser entregue:
-  - um repositório git (fork deste) contendo o projeto
-  
-- Opcional:
-  - versão de build / produção do front-end
+- Banco
+
+  - Adicionar as configurações do seu banco no arquivo: [Database](server/config/database.js).
+  - Feito isso, rodar o comando **node_modules/.bin/sequelize db:migrate** para executar o script de migração.
+
+- API:
+
+  - Api pública para criação do usuário inicial: **Post** http://localhost:3000/api/users
+  - Exemplo:
+    `curl 'http://localhost:3000/api/users/' \ -H 'Accept: application/json, text/plain, /' \ -H 'Origin: http://localhost:8080' \ -H 'Content-Type: application/json;charset=UTF-8' \ --data-binary '{ "name": "Lucas", "email": "lucasveberdebrida@gmail.com", "password": "123123" }' --compressed`
+
+- Rodando o projeto
+
+  - Na raiz do projeto, rodar comando `npm install` para instalar as dependencias do front e backend.
+  - Ainda na raiz, rodar o comando `npm run client` para subir o frontend no endereço http://localhost:8080
+  - Rodar o comando `npm run server` para subir o backend disponível no endereço http://localhost:3000
