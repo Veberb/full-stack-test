@@ -16,7 +16,6 @@ apis.forEach(apiPath => {
   require(`${apiPath}`)(app);
 });
 app.use((err, req, res, next) => {
-  console.log(err);
   const error = Boom.isBoom(err) ? err : Boom.boomify(err);
 
   res

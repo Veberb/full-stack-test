@@ -4,7 +4,6 @@ export default {
   async login (data) {
     try {
       const res = await $http.post('/users/login', data)
-      console.log(res)
       authorization(res.data.token)
       return res.data
     } catch (e) {

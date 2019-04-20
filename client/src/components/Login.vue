@@ -50,10 +50,10 @@ export default {
       try {
         if (event) event.preventDefault()
         await userService.login(this.form)
-
+        this.$toasted.success('Bem vindo :)')
         this.$router.push('/beer')
       } catch (error) {
-        console.log(error, 'oi')
+        this.$toasted.error(error.message)
       }
     }
   }

@@ -15,7 +15,7 @@ exports.create = async ({ name, email, password }) => {
 
 exports.login = async ({ email, password }) => {
   if (!email) throw Boom.badData("É preciso informar o email");
-  if (!password) throw Boom.badData("É preciso informar a s enha");
+  if (!password) throw Boom.badData("É preciso informar a senha");
 
   const user = await User.findOne({ where: { email } });
 

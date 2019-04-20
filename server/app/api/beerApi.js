@@ -10,12 +10,11 @@ module.exports = app => {
   app.use("/api/beers", router);
 };
 // VerifyToken
-router.get("/", async (req, res, next) => {
+router.get("/", VerifyToken, async (req, res, next) => {
   try {
     const beers = await beerManager.list(req.query);
     return res.json(beers);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 });

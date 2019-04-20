@@ -39,7 +39,6 @@ export default {
   watch: {
     async page () {
       this.items = await this.fetch()
-      console.log(this.items)
     }
   },
   async created () {
