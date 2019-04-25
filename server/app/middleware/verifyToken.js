@@ -1,8 +1,8 @@
-var jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const config = require("../../config");
 
 function verifyToken(req, res, next) {
-  var token = req.headers["mytapp-token"];
+  const token = req.headers["mytapp-token"];
   if (!token)
     return res.status(403).send({ auth: false, message: "No token provided." });
 
