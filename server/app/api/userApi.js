@@ -26,7 +26,7 @@ router.post("/login", async (req, res, next) => {
   try {
     const user = await userManager.login(req.body);
 
-    var token = jwt.sign({ id: user.id }, config.secret, {
+    const token = jwt.sign({ id: user.id }, config.secret, {
       expiresIn: 86400
     });
     res.status(200).send({ auth: true, token: token });
